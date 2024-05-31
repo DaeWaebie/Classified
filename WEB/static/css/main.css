@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    background: 
+    linear-gradient(to left, #886af1b2, #bbb6ffef,#d9dcf8f2, #e9ebfcf7,#ffffff, #ffffff, #e9ebfcf7, #d9dcf8f2, #bbb6ffe4, #886af1b2),
+        url('../img/bg_moving.gif') repeat center center fixed;
+    background-size: cover, cover; /* 각 배경의 크기 조절 */
+    position: relative; 
+}
+
+h1 {
+    color: #3a3a3a;
+    position: absolute;
+    top: 8vh; /* 원하는 위치에 따라 조정합니다. */
+    left: 2vw; /* 왼쪽으로의 여백을 줍니다. */
+    font-size: 3.1vw; /* 뷰포트 너비의 5% 크기로 설정 */
+}
+
+.face-image {
+    width: 60lvh; /* 뷰포트 너비의 50%로 설정 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%); /* 중앙에 위치하도록 조정 */
+}
+
+.teamlogo-image {
+    max-width: 12%;
+    position: absolute;
+    bottom: 12%; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.start-button {
+    width: 15%; 
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-60%);
+}
+
+
+

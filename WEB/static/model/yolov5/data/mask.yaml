@@ -1,0 +1,6 @@
+path: ../datasets/mask # dataset root dir
+train: train/images
+val: valid/images
+
+nc: 2
+names: ["mask", "no-mask"]

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De-identification</title>
+    <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- 뒤로 가기 버튼 -->
+    <a href="{{ url_for('index') }}" class="back-button">
+        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="Back" class="back-icon">
+    </a>
+
+    <!--업로드 박스(회색 영역)-->
+    <a href="{{ url_for('DATA.input_data')}}" class="reset-button">
+        <img src="{{ url_for('static', filename='img/re_button.png') }}" alt="back">
+    </a>
+    
+    <div class="upload-box drag-drop-area" id="uploadBox" >
+        <p class = 'preview'>preview</p>
+        <video id="videoPreview" controls autoplay loop muted style="max-width: 700px; height: 500px;">
+            <source src="{{ url_for('static', filename='upload/preview.mp4') }}" type="video/mp4">
+        </video>
+        <br>
+    <!-- </div> -->
+    <!--모드 선택 & 런 버튼-->
+    <!-- <div class="controls"> -->
+        <form id="upload-form" action="/input/upload/" method="POST">
+    
+            <select name="MODE" id="MODE">
+                <option value="none">===Select Mode===</option>
+                <option value="mode1">사각 모자이크</option>
+                <option value="mode2">타원 모자이크</option>
+                <option value="mode3">사각 블러</option>
+                <option value="mode4">타원 블러</option>
+            </select>
+            <button type="submit" class="hidden-button" id="startButton" onclick="showLoadingPage()">
+                <img src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button">
+            </button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
