@@ -1,0 +1,13 @@
+Stopping training early as no improvement observed in last 50 epochs. Best results observed at epoch 130, best model saved as best.pt.
+To update EarlyStopping(patience=50) pass a new patience value, i.e. `python train.py --patience 300` or use `--patience 0` to disable EarlyStopping.
+
+181 epochs completed in 14.739 hours.
+Optimizer stripped from runs\train\face_49k\weights\last.pt, 14.3MB
+Optimizer stripped from runs\train\face_49k\weights\best.pt, 14.3MB
+
+Validating runs\train\face_49k\weights\best.pt...
+Fusing layers... 
+YOLOv5s summary: 157 layers, 7012822 parameters, 0 gradients, 15.8 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 154/154 [00:54<00:00,  2.81it/s]
+                   all       9818      21144      0.953      0.914      0.959      0.656
+Results saved to runs\train\face_49k
