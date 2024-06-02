@@ -1,0 +1,7 @@
+path: ../datasets/face_detection_49k
+train: images/train
+val: images/val
+
+nc: 1
+# Classes
+names: ["face"]
