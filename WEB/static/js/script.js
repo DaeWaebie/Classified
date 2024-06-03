@@ -71,7 +71,7 @@ function displayFile() {
         };
         fileReader.readAsDataURL(file);
     } else {
-        alert('This filetype is not supported!');
+        alert('지원되는 형식의 파일이 아닙니다!');
         dragArea.classList.remove('active');
     }
 }

@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De-identification</title>
+    <title>안면 비식별화 서비스</title>
     <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
+    <style>
+        .loading-icon{
+            display:none;
+        }
+    </style>
 </head>
 <body>
-    <!-- 뒤로 가기 버튼 -->
-    <a href="{{ url_for('index') }}" class="back-button">
-        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
+    <!-- info 버튼 -->
+    <a href="{{ url_for('info') }}">
+        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Home" class="service-icon">
+    </a>
+    <!-- 이전으로 가기 버튼 -->
+    <a href="{{ url_for('index') }}">
+        <img id="backbuttonImage" src="{{ url_for('static', filename='img/re_button.png') }}" alt="Back" class="re-icon"
+        data-alt-src="{{ url_for('static', filename='img/re_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
     </a>
     <div class="container">
         <div class="video-container">
@@ -17,35 +27,81 @@
                 <source src="{{ url_for('static', filename='upload/preview.mp4') }}" type="video/mp4">
             </video>
         </div>
-        <div class="options-container">
+        <div class="side-container">
+            <!-- 로딩 아이콘 -->   
+            <img src="{{url_for('static', filename='img/loading.gif')}}" class = "loading-icon" id = "loadingIcon" alt="Loading">
+
             <form id="option-form" action="/input/upload/" method="POST">
                 <select name="MODE" id="MODE">
-                    <option value="none">===Select Mode===</option>
+                    <option value="none">모드 선택</option>
                     <option value="mode1">사각 모자이크</option>
                     <option value="mode2">타원 모자이크</option>
                     <option value="mode3">사각 블러</option>
                     <option value="mode4">타원 블러</option>
                 </select>
+                <!--작동 버튼-->
                 <button type="submit" class="hidden-button" id="startButton">
-                    <img src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button">
+                    <img id= "buttonImage" src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button"
+                    data-alt-src="{{ url_for('static', filename='img/run_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
                 </button>
+                
+
             </form>
         </div>
     </div>
     
-    
-    <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
-
+    <!-- home 버튼-->
+    <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
+    </a>
+    <p class="copyright" >ⓒ team. Classified. all rights reserved.</p>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var imgElement = document.getElementById('backImage');
-        imgElement.addEventListener('mouseover', function() {
-            this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
-        });
-        imgElement.addEventListener('mouseout', function() {
-            this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+        var form = document.getElementById('option-form');
+        var selectBox = document.getElementById('MODE');
+        var loadingIcon = document.getElementById('loadingIcon');
+        form.addEventListener('submit',function(event) {
+            selectBox.style.display = 'none';
+            loadingIcon.style.display = 'block';
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var imgElement = document.getElementById('backImage');
+    imgElement.addEventListener('mouseover', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+    });
+    imgElement.addEventListener('mouseout', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+    });
+});
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var buttonImage = document.getElementById('buttonImage');
+        var originalSrc = buttonImage.getAttribute('src');
+        var altSrc = buttonImage.getAttribute('data-alt-src');
+        var backbuttonImage = document.getElementById('backbuttonImage');
+        var backSrc = backbuttonImage.getAttribute('src');
+        var backAltSrc = backbuttonImage.getAttribute('data-alt-src');
+
+
+        buttonImage.addEventListener('mouseover', function() {
+            buttonImage.setAttribute('src', altSrc);
+        });
+
+        buttonImage.addEventListener('mouseout', function() {
+            buttonImage.setAttribute('src', originalSrc);
+        });
+
+        backbuttonImage.addEventListener('mouseover', function() {
+            backbuttonImage.setAttribute('src', backAltSrc);
+        });
+
+        backbuttonImage.addEventListener('mouseout', function() {
+            backbuttonImage.setAttribute('src', backSrc);
+        });
+    });
+
     </script>
 </body>
 </html>
