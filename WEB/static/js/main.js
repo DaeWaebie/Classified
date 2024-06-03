@@ -1,8 +1,9 @@
-function changeImage(action) {
-    var imgElement = document.getElementsByClassName('teamlogo-image');
-    if (action === 'over') {
-        imgElement.src = "{{ url_for('static', filename='img/team_logo_white.png') }}";
-    } else if (action === 'out') {
-        imgElement.src = "{{ url_for('static', filename='img/team_logo.png') }}";
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    var imgElement = document.getElementById('backImage');
+    imgElement.addEventListener('mouseover', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+    });
+    imgElement.addEventListener('mouseout', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+    });
+});

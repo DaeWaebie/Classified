@@ -9,17 +9,15 @@
 <body>
     <!-- 뒤로 가기 버튼 -->
     <a href="{{ url_for('index') }}" class="back-button">
-        <img id="backImage" src="{{ url_for('static', filename='img/team_logo.png') }}" alt="Back" class="back-icon"
-             data-over-src="{{ url_for('static', filename='img/team_logo_white.png') }}"
-             data-out-src="{{ url_for('static', filename='img/team_logo.png') }}">
+        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
     </a>
-
     <!--업로드 박스(회색 영역)-->
     <div class="upload-box drag-drop-area" id="uploadBox" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
         <form id="upload-form" action="/input/preview/" method="post" enctype="multipart/form-data">
             <input type="file" name="file" id="file" accept="video/mp4" style="display:none;">
             <label for="file">
                 <img src="{{ url_for('static', filename='img/upload.png') }}" class="upload-icon">
+                <br>
                 <div class="upload-text">여기를 클릭하거나 파일을 드래그하여 비디오를 업로드하세요</div>
                 <div class="upload-restrictions">MP4 파일만 업로드 가능합니다</div>
                 <br>
@@ -56,6 +54,17 @@
         alert('업로드 중 오류가 발생했습니다');
     });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var imgElement = document.getElementById('backImage');
+    imgElement.addEventListener('mouseover', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+    });
+    imgElement.addEventListener('mouseout', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+    });
+});
+
 
 
  </script>

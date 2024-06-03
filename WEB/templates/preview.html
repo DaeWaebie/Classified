@@ -9,17 +9,14 @@
 <body>
     <!-- 뒤로 가기 버튼 -->
     <a href="{{ url_for('index') }}" class="back-button">
-        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="Back" class="back-icon">
+        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
     </a>
 
     <!--업로드 박스(회색 영역)-->
     <a href="{{ url_for('DATA.input_data')}}" class="reset-button">
         <img src="{{ url_for('static', filename='img/re_button.png') }}" alt="back">
     </a>
-    
-    <div class="upload-box drag-drop-area" id="uploadBox" >
-        <p class = 'preview'>preview</p>
-        <video id="videoPreview" controls autoplay loop muted style="max-width: 700px; height: 500px;">
+        <video id="videoPreview" controls autoplay loop muted >
             <source src="{{ url_for('static', filename='upload/preview.mp4') }}" type="video/mp4">
         </video>
         <br>
@@ -39,7 +36,7 @@
                 <img src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button">
             </button>
         </form>
-    </div>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
