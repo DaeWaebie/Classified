@@ -9,6 +9,7 @@
     align-items: center;
     text-align: center; 
     padding: 20px; 
+    gap: 20px;
     background-color: #ffffff00;
     position: fixed; /* 뷰포트에 고정된 위치를 설정합니다. */
     top: 47%; /* 뷰포트의 세로 방향에서 50% 위치에 배치합니다. */
@@ -16,21 +17,29 @@
     transform: translate(-50%, -50%); /* 자신의 너비와 높이의 50%만큼 왼쪽과 위쪽으로 이동시켜 진정한 중앙에 배치합니다. */
     z-index: 999; /* 다른 요소들 위에 나타나도록 우선 순위를 높입니다. */
 }
+.video-container {
+    flex: 1; /* 비디오 컨테이너가 사용 가능한 모든 공간을 차지하도록 설정 */
+    display: flex;
+    align-items: center; /* 비디오를 수직으로 중앙에 배치 */
+    height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
+}
 #videoPlayer {
-    width: 100%;
-    height: auto; /* 비디오 플레이어의 높이를 비디오의 가로세로 비율에 맞게 조정 */
+    display: flex;
+    align-items: center; /* 비디오를 수직으로 중앙에 배치 */
+    height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
+    width: 100%; /* 비디오를 수평으로 꽉 차게 설정 */
 }
 .dashed-box {
     width: 70%;
     height: 100%;
-    border: 2px dashed #a9a9a9c5; /* 점선 테두리 설정 */
+    border: 2px dashed #a9a9a9c5; 
     display: flex;
-    flex-direction: column; /* 자식 요소들을 세로 방향으로 정렬합니다. */
-    justify-content: center; /* 자식 요소들을 수직 중앙에 배치합니다. */
-    align-items: center; /* 자식 요소들을 수평 중앙에 배치합니다. */
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
     padding: 20px;
     cursor: pointer;
-    box-sizing: border-box; /* 패딩을 포함하여 너비와 높이를 계산합니다. */
+    box-sizing: border-box; 
 }
 .hidden-button {
     background: none; /* 버튼 배경 제거 */
@@ -55,24 +64,16 @@
     color: #666;
 }
 
-.upload-button{
+.upload-button, #downloadImage {
     height: 80px; /* 버튼의 높이를 조절하세요 */
     position: absolute; /* 절대 위치 설정 */
     top: 80%; /* 위에서 50% 떨어진 위치로 설정 */
     right: 5%; /* 오른쪽에서 10% 떨어진 위치로 설정 */
-
-}
-#downloadImage {
-    position: absolute;
-    bottom: 0;
-    right: 0; /* 이미지를 비디오 컨테이너의 우측 하단에 위치 */
-    margin: 10px; /* 이미지와 비디오 컨테이너 사이의 여백 추가 */
 }
 .controls {
     text-align: center;
     margin-top: 20px;
 }
-
 .controls select, .controls button {
     margin: 10px;
 }
@@ -101,26 +102,31 @@
     justify-content: center;
     align-items: center;
 }
-
-.download-button {
-    width: 200px; /* 버튼의 너비를 조절하세요 */
-    height: 150px; /* 버튼의 높이를 조절하세요 */
-    margin-top: 20px; /* 버튼 위쪽 여백 설정 */
+select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px; 
+    font: rgb(185, 185, 185);
+    border: 1px solid #7f30bf; 
+    border-radius: 5px;
+    background-color: #fff; 
+    appearance: none;
+    cursor: pointer; 
+    outline: #7f30bf;
+    text-align-last: center;
+}
+/* 드롭다운 화살표 아이콘 스타일 */
+select::-ms-expand {
+    display: none; /* IE에서 드롭다운 화살표를 숨깁니다. */
 }
 
-.preview {
-    color: rgb(156, 154, 162);
-    font-size: 27px;
-    margin-top: 3px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+/* 드롭다운 화살표 아이콘 스타일 */
+select::after {
+    content: '\25BC'; /* 화살표 아이콘을 설정합니다. */
+    position: absolute; /* 절대 위치로 설정합니다. */
+    top: 50%; /* 드롭다운 박스 상단에 아이콘을 위치시킵니다. */
+    right: 10px; /* 오른쪽 여백을 설정합니다. */
+    transform: translateY(-50%); /* 아이콘을 수직으로 가운데 정렬합니다. */
+    pointer-events: none; /* 이벤트가 아이콘에 영향을 주지 않도록 설정합니다. */
+    color: #666; /* 아이콘 색상을 설정합니다. */
 }
-.reset-button {
-    width: 20px; /* 버튼의 너비를 30px로 설정 */
-    height: 10px; /* 버튼의 높이를 20px로 설정 */
-    margin-top: 80px; /* 버튼 위쪽 여백 설정 */
-    position: absolute; /* 절대 위치 설정 */
-    top: 37px; /* 위에서 10px 떨어진 위치로 설정 */
-    right: 13%; /* 오른쪽에서 10px 떨어진 위치로 설정 */
-}
-
