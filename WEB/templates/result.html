@@ -22,13 +22,16 @@
                     <p>표시할 결과가 없습니다.</p>
                 {% endif %}
         </div>
-        <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
-            <img id="downloadImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button">
-        </a>         
+        <div class="download-container">
+            <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
+                <img id="downloadImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button">
+            </a>
         </div>
     </div>
+
 <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
-    <script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function() {
         var imgElement = document.getElementById('backImage');
         imgElement.addEventListener('mouseover', function() {
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
         });
     });
-    </script>
+</script>
     
 </body>
 </html>
