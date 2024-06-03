@@ -7,33 +7,40 @@
     <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!-- 뒤로 가기 버튼 -->
-    <a href="{{ url_for('index') }}" class="back-button">
-        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
-    </a>
-    <!--업로드 박스(회색 영역)-->
-    <div class="upload-box drag-drop-area" id="uploadBox" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
-        <form id="upload-form" action="/input/preview/" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" id="file" accept="video/mp4" style="display:none;">
-            <label for="file">
-                <img src="{{ url_for('static', filename='img/upload.png') }}" class="upload-icon">
+    <body>
+        <!-- 뒤로 가기 버튼 -->
+        <a href="{{ url_for('index') }}" class="back-button">
+            <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
+        </a>
+        <!--업로드 박스(회색 영역)-->
+        <div class="upload-box" id="uploadBox">
+            <div class="dashed-box drag-drop-area" ondrap="handleDrop(event)" ondragover="handleDragOver(event)">
+                <!-- 아래의 form 태그의 id 값을 변경하고, label 태그의 for 속성과 input 태그의 id 속성을 일치시킵니다. -->
+                <form id="upload-form" class="drag-drop-area" action="/input/preview/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="file" accept="video/mp4" style="display:none;">
+                    <label for="file">
+                        <br>
+                        <br>
+                        <img src="{{ url_for('static', filename='img/upload.png') }}" class="upload-icon">
+                        <br>
+                        <br>
+                        <div class="upload-text">여기를 클릭하거나 파일을 드래그하여 비디오를 업로드하세요.</div>
+                        <div class="upload-restrictions">MP4 파일만 업로드 가능합니다.</div>
+                        <br>
+                        <div class="upload-text" id="uploadText"></div>
+                    </label>
+                    <script src="{{ url_for('static', filename = 'js/file_drag.js') }}"></script>
+                    <img src=""{{ url_for('static', filename='img/info.jpg') }}">
+                    <button type="submit" class="hidden-button" id="uploadButton">
+                        <img src="{{ url_for('static', filename='img/upload_button.png') }}" alt="Upload" class="upload-button">
+                    </button>
+                </form>
                 <br>
-                <div class="upload-text">여기를 클릭하거나 파일을 드래그하여 비디오를 업로드하세요</div>
-                <div class="upload-restrictions">MP4 파일만 업로드 가능합니다</div>
-                <br>
-                <div class="upload-text" id="uploadText"></div>
-            </label>
-            <script src="{{ url_for('static', filename='js/file_drag.js') }}"></script>
-          
-            <!--여기까지 업로드박스-->
-
-            <!--업로드 버튼-->
-            <button type="submit" class="hidden-button" id="uploadButton">
-                <img src="{{ url_for('static', filename='img/upload_button.png') }}" alt="Upload" class="upload-button">
-            </button>
-        </form> 
-    </div>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+                <!-- 아래의 button 태그의 type 속성을 "button"으로 변경합니다. -->
+            </div>
+        </div>
+        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
+    
     <script>
         function showLoadingPage() {
     const form = document.getElementById('upload-form');
@@ -54,7 +61,6 @@
         alert('업로드 중 오류가 발생했습니다');
     });
 }
-
 document.addEventListener("DOMContentLoaded", function() {
     var imgElement = document.getElementById('backImage');
     imgElement.addEventListener('mouseover', function() {
@@ -64,9 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
         this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
     });
 });
-
-
-
  </script>
 </body>
 </html>

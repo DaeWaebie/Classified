@@ -11,32 +11,41 @@
     <a href="{{ url_for('index') }}" class="back-button">
         <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
     </a>
-
-    <!--업로드 박스(회색 영역)-->
-    <a href="{{ url_for('DATA.input_data')}}" class="reset-button">
-        <img src="{{ url_for('static', filename='img/re_button.png') }}" alt="back">
-    </a>
-        <video id="videoPreview" controls autoplay loop muted >
-            <source src="{{ url_for('static', filename='upload/preview.mp4') }}" type="video/mp4">
-        </video>
-        <br>
-    <!-- </div> -->
-    <!--모드 선택 & 런 버튼-->
-    <!-- <div class="controls"> -->
-        <form id="upload-form" action="/input/upload/" method="POST">
+    <div class="container">
+        <div class="video-container">
+            <video id="videoPlayer" controls autoplay loop muted >
+                <source src="{{ url_for('static', filename='upload/preview.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="options-container">
+            <form id="option-form" action="/input/upload/" method="POST">
+                <select name="MODE" id="MODE">
+                    <option value="none">===Select Mode===</option>
+                    <option value="mode1">사각 모자이크</option>
+                    <option value="mode2">타원 모자이크</option>
+                    <option value="mode3">사각 블러</option>
+                    <option value="mode4">타원 블러</option>
+                </select>
+                <button type="submit" class="hidden-button" id="startButton">
+                    <img src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button">
+                </button>
+            </form>
+        </div>
+    </div>
     
-            <select name="MODE" id="MODE">
-                <option value="none">===Select Mode===</option>
-                <option value="mode1">사각 모자이크</option>
-                <option value="mode2">타원 모자이크</option>
-                <option value="mode3">사각 블러</option>
-                <option value="mode4">타원 블러</option>
-            </select>
-            <button type="submit" class="hidden-button" id="startButton" onclick="showLoadingPage()">
-                <img src="{{ url_for('static', filename='img/run_button.png') }}" alt="Upload" class="upload-button">
-            </button>
-        </form>
+    
+    <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var imgElement = document.getElementById('backImage');
+        imgElement.addEventListener('mouseover', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+        });
+        imgElement.addEventListener('mouseout', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+        });
+    });
+    </script>
 </body>
 </html>

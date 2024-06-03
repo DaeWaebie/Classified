@@ -38,7 +38,7 @@
     function handleFiles(files) {
         for (const file of files) {
             if (file.type !== 'video/mp4') {
-                alert('Only mp4 files can be uploaded');
+                alert('MP4 파일만 업로드 가능합니다.');
                 return;
             }
         }

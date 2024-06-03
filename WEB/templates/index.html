@@ -16,10 +16,8 @@
     <br>
     <br>
     <br>
-    <a href="/input/info/">
-        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image"
-        onmouseover="changeImage('over')" onmouseout="changeImage('out')">
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
+
 </body>
 
 <script>
@@ -29,15 +27,6 @@
 
     function resetEvent(imgElement) {
         imgElement.src = "{{ url_for('static', filename='img/face_img.png') }}";
-    }
-
-    function changeImage(action) {
-        var imgElement = document.getElementsByClassName('teamlogo-image')[0];
-        if (action === 'over') {
-            imgElement.src = "{{ url_for('static', filename='img/team_logo_white.png') }}";
-        } else if (action === 'out') {
-            imgElement.src = "{{ url_for('static', filename='img/team_logo.png') }}";
-        }
     }
 </script>
 </html>
