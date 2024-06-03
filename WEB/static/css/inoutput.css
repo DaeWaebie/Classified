@@ -1,0 +1,125 @@
+.upload-box, #videoPreview {
+    width: 65%; /* 너비를 65%로 설정합니다. */
+    height: 60%; /* 부모 요소 또는 뷰포트 높이의 60%로 높이를 설정합니다. */
+    border: none;
+    border-top: 2px solid #a9a9a9c5;
+    border-bottom: 2px solid #a9a9a9c5;
+    display: flex; /* 플렉스 박스 레이아웃을 사용하여 자식 요소들을 정렬합니다. */
+    flex-direction: column; /* 자식 요소들을 세로 방향으로 정렬합니다. */
+    justify-content: center; /* 자식 요소들을 수직 중앙에 배치합니다. */
+    align-items: center; /* 자식 요소들을 수평 중앙에 배치합니다. */
+    text-align: center; /* 박스 내부 텍스트를 중앙 정렬합니다. */
+    padding: 20px; /* 안쪽 여백(padding)을 20px로 설정합니다. */
+    background-color: #ffffff; /* 배경색을 밝은 회색(#f9f9f9)으로 설정합니다. */
+    cursor: pointer; /* 마우스 커서를 포인터(손가락 모양)로 변경합니다. */
+    position: fixed; /* 뷰포트에 고정된 위치를 설정합니다. */
+    top: 50%; /* 뷰포트의 세로 방향에서 50% 위치에 배치합니다. */
+    left: 50%; /* 뷰포트의 가로 방향에서 50% 위치에 배치합니다. */
+    transform: translate(-50%, -50%); /* 자신의 너비와 높이의 50%만큼 왼쪽과 위쪽으로 이동시켜 진정한 중앙에 배치합니다. */
+    z-index: 999; /* 다른 요소들 위에 나타나도록 우선 순위를 높입니다. */
+}
+
+
+.controls{
+    text-align: center;
+    margin-top: 20px;
+}
+.controls select, .controls button {
+    margin: 10px;
+}
+.upload-icon{
+    max-width: 20%;
+}
+.upload-box input[type="file"] {
+    display: none;
+}
+.upload-text {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.upload-restrictions {
+    font-size: 14px;
+    color: #666;
+}
+.hidden-button {
+    background: none; /* 버튼 배경 제거 */
+    border: none; /* 버튼 테두리 제거 */
+    padding: 0; /* 버튼 패딩 제거 */
+    margin: 0; /* 버튼 마진 제거 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    bottom: -60px; /* 버튼을 박스 아래로 30px 내림 */
+    left: 5%;
+    transform: translateX(-50%); /* 가운데 정렬 */
+  }
+.upload-button {
+    /* width: 200; /* 버튼의 너비를 조절하세요 */
+    height: 80px; /* 버튼의 높이를 조절하세요 */
+    bottom: -90px; /* 사각형 박스 아래로 30px 떨어뜨림 */
+    bottom: -45px; /* 버튼을 박스 아래로 30px 내림 */
+    left: 3%;
+}
+.back-button{
+    top: 40px;
+    left: 40px;
+    position: absolute;
+}
+.service-icon {
+    width: 6%; /* 이미지 크기를 고정 크기로 설정 */
+    position: fixed; /* 뷰포트에 고정된 위치를 설정 */
+    top: 5%; /* 뷰포트의 상단에서 2% 아래에 위치 */
+    right: 3%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
+    transition: all 0.3s ease;
+}
+
+
+
+.drag-drop-area{
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.drag-drop-area.drag-over {border-color: #c399e7;
+                           border-width: 3px;}
+
+.center-alpha {
+    display: flex;
+    justify-content: center;
+    height: 100vh; /* 화면 세로 크기 만큼 사각형이 채워지도록 설정 */
+    width: 40vw; /* 화면 가로 크기의 절반만큼의 너비를 가짐 */
+    background-color: rgba(165, 137, 235, 0.034); /* 파란색의 투명도 있는 배경 */
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-button {
+    width: 200px; /* 버튼의 너비를 조절하세요 */
+    height: 150px; /* 버튼의 높이를 조절하세요 */
+    margin-top: 20px; /* 버튼 위쪽 여백 설정 */
+}
+
+.preview {
+    color: rgb(156, 154, 162);
+    font-size: 27px;
+    margin-top: 3px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+.reset-button {
+    width: 20px; /* 버튼의 너비를 30px로 설정 */
+    height: 10px; /* 버튼의 높이를 20px로 설정 */
+    margin-top: 80px; /* 버튼 위쪽 여백 설정 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 37px; /* 위에서 10px 떨어진 위치로 설정 */
+    right: 13%; /* 오른쪽에서 10px 떨어진 위치로 설정 */
+}
+

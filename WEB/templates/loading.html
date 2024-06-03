@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Nf6l9pEycvaywCJwvWTDeXQsVr2/+T4hWl2ZB/a4eB1ijQi6xNzT/6NQqOf/1kjvs9yhd7IvLsbxC0JdLqME2w==" crossorigin="anonymous" />
+    <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
+    <title>Loading...</title>
+    <style>
+        .upload-box {
+            text-align: center; /* 아이콘을 가운데 정렬 */
+            margin-top: 20px; /* 여백 추가 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 뒤로 가기 버튼 -->
+    <a href="{{ url_for('index') }}" class="back-button">
+        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="Back" class="back-icon">
+    </a>
+    <!-- 로딩 아이콘 -->
+    <div class="upload-box">
+        <i class="fas fa-circle-notch fa-spin fa-7x" style="color: #633af8"></i>
+        <br>
+        <div class="loading-text">Processing...</div>
+    </div>
+    <script>
+        function pollForCompletion() {
+            // 서버에 작업 완료 여부를 확인하는 요청 보내기
+            fetch('/input/upload/is_complete')
+            .then(response => response.json())
+            .then(data => {
+                if (data.complete) {
+                    // 작업이 완료되었으면 결과 페이지로 이동
+                    window.location.href = '/result/';
+                } else {
+                    // 작업이 완료되지 않았으면 계속 폴링
+                    setTimeout(pollForCompletion, 1000); // 1초마다 확인
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // 에러 발생 시 처리
+            });
+        }
+
+        // 페이지 로딩 시 폴링 시작
+        window.onload = function() {
+            pollForCompletion();
+        };
+    </script>
+</body>
+</html>
