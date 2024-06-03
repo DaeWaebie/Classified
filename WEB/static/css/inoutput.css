@@ -1,3 +1,4 @@
+
 .container {
     width: 75%; 
     height: 65%;
@@ -10,7 +11,7 @@
     text-align: center; 
     padding: 20px; 
     gap: 20px;
-    background-color: #ffffff00;
+    background-color: #ffffff6d;
     position: fixed; 
     top: 50%; 
     left: 50%;
@@ -147,4 +148,11 @@ select::after {
     pointer-events: none; /* 이벤트가 아이콘에 영향을 주지 않도록 설정합니다. */
     color: #666; /* 아이콘 색상을 설정합니다. */
 }
-
+.copyright {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}

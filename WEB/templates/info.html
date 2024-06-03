@@ -18,9 +18,42 @@
             display: block; /* 이미지 주변의 여백을 없애기 위해 block 요소로 설정 */
             margin: 0 auto; /* 수평 중앙 정렬 */
         }
+
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
+    <a href="#" class="back-button" onclick="goBack()">
+        <img id="backbuttonImage" src="{{ url_for('static', filename='img/re_button.png') }}" alt="Back" class="re-icon"
+        data-alt-src="{{ url_for('static', filename='img/re_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+    </a>
     <img src="{{ url_for('static', filename='img/info.jpg') }}" class="responsive-image">
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        var backbuttonImage = document.getElementById('backbuttonImage');
+        var backSrc = backbuttonImage.getAttribute('src');
+        var backAltSrc = backbuttonImage.getAttribute('data-alt-src');
+
+        backbuttonImage.addEventListener('mouseover', function() {
+            backbuttonImage.setAttribute('src', backAltSrc);
+        });
+
+        backbuttonImage.addEventListener('mouseout', function() {
+            backbuttonImage.setAttribute('src', backSrc);
+        });
+
+    });
+    </script>
+    
 </body>
 </html>

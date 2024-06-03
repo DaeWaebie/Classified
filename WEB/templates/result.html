@@ -23,6 +23,8 @@
                 {% endif %}
         </div>
         <div class="side-container">
+            <p>비식별화가 완료되었습니다.
+            </p>
             <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
                 <img id="buttonImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button"
                 data-alt-src="{{ url_for('static', filename='img/download_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
@@ -34,22 +36,22 @@
     <a href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
     </a>
+    <p class="copyright" >ⓒ team. Classified. all rights reserved.</p>
     <script>
 
 document.addEventListener("DOMContentLoaded", function() {
     var imgElement = document.getElementById('backImage');
-    imgElement.addEventListener('mouseover', function() {
-        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
-    });
-    imgElement.addEventListener('mouseout', function() {
-        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
     var buttonImage = document.getElementById('buttonImage');
     var originalSrc = buttonImage.getAttribute('src');
     var altSrc = buttonImage.getAttribute('data-alt-src');
+
+    imgElement.addEventListener('mouseover', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+    });
+
+    imgElement.addEventListener('mouseout', function() {
+        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+    });
 
     buttonImage.addEventListener('mouseover', function() {
         buttonImage.setAttribute('src', altSrc);
@@ -58,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     buttonImage.addEventListener('mouseout', function() {
         buttonImage.setAttribute('src', originalSrc);
     });
+
 });
+
 
     </script>
 </body>

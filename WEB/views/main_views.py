@@ -136,7 +136,7 @@ def run_yolo_detection(file_path, mode):
 
     # YOLOv5 모델 실행
     run(
-        weights=os.path.join(root_dir, 'static', 'model', 'yolov5', 'runs', 'train', 'face_15k', 'weights', 'best.pt'),
+        weights=os.path.join(root_dir, 'static', 'model', 'yolov5', 'runs', 'train', 'face_49k', 'weights', 'best.pt'),
         source=file_path,
         hide_conf=True,
         hide_labels=True,
