@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De-Identify Faces Service</title>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body>
+
+
+    <a href="/input/">
+    <img src="{{ url_for('static', filename='img/face_img.png') }}" alt="Face" class="face-image"
+    onmouseover="startEvent(this)" onmouseout="resetEvent(this)">
+    </a>
+    <br>
+    <br>
+    <br>
+    <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
+
+</body>
+
+<script>
+    function startEvent(imgElement) {
+        imgElement.src = "{{ url_for('static', filename='img/face_img_light.png') }}";
+    }
+
+    function resetEvent(imgElement) {
+        imgElement.src = "{{ url_for('static', filename='img/face_img.png') }}";
+    }
+</script>
+</html>
+

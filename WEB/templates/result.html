@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De-identification</title>
+    <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- 뒤로 가기 버튼 -->
+    <a href="{{ url_for('index') }}" class="back-button">
+        <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
+    </a>
+    
+    <div class="container">
+        <div class="video-container">
+            {% if result %}
+                    <video id="videoPlayer" controls autoplay loop muted>
+                        <source src="{{ url_for('static', filename='download/de_video.mp4') }}" type="video/mp4">
+                    </video>  
+                {% else %}
+                    <p>표시할 결과가 없습니다.</p>
+                {% endif %}
+        </div>
+        <div class="download-container">
+            <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
+                <img id="downloadImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button">
+            </a>
+        </div>
+    </div>
+
+<img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+        var imgElement = document.getElementById('backImage');
+        imgElement.addEventListener('mouseover', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+        });
+        imgElement.addEventListener('mouseout', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+        });
+    });
+</script>
+    
+</body>
+</html>

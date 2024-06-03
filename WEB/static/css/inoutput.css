@@ -1,0 +1,132 @@
+.upload-box, .container {
+    width: 75%; 
+    height: 70%;
+    border-top: 2px solid #8d8d8dc5;
+    border-bottom: 2px solid #8d8d8dc5;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    text-align: center; 
+    padding: 20px; 
+    gap: 20px;
+    background-color: #ffffff00;
+    position: fixed; /* 뷰포트에 고정된 위치를 설정합니다. */
+    top: 47%; /* 뷰포트의 세로 방향에서 50% 위치에 배치합니다. */
+    left: 50%; /* 뷰포트의 가로 방향에서 50% 위치에 배치합니다. */
+    transform: translate(-50%, -50%); /* 자신의 너비와 높이의 50%만큼 왼쪽과 위쪽으로 이동시켜 진정한 중앙에 배치합니다. */
+    z-index: 999; /* 다른 요소들 위에 나타나도록 우선 순위를 높입니다. */
+}
+.video-container {
+    flex: 1; /* 비디오 컨테이너가 사용 가능한 모든 공간을 차지하도록 설정 */
+    display: flex;
+    align-items: center; /* 비디오를 수직으로 중앙에 배치 */
+    height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
+}
+#videoPlayer {
+    display: flex;
+    align-items: center; /* 비디오를 수직으로 중앙에 배치 */
+    height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
+    width: 100%; /* 비디오를 수평으로 꽉 차게 설정 */
+}
+.dashed-box {
+    width: 70%;
+    height: 100%;
+    border: 2px dashed #a9a9a9c5; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    padding: 20px;
+    cursor: pointer;
+    box-sizing: border-box; 
+}
+.hidden-button {
+    background: none; /* 버튼 배경 제거 */
+    border: none; /* 버튼 테두리 제거 */
+    padding: 0; /* 버튼 패딩 제거 */
+    margin: 0; /* 버튼 마진 제거 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    width: 80px;
+    height: 40px;
+}
+.upload-icon {
+    max-width: 20%;
+}
+.upload-text {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.upload-restrictions {
+    font-size: 14px;
+    color: #666;
+}
+
+.upload-button, #downloadImage {
+    height: 80px; /* 버튼의 높이를 조절하세요 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 80%; /* 위에서 50% 떨어진 위치로 설정 */
+    right: 5%; /* 오른쪽에서 10% 떨어진 위치로 설정 */
+}
+.controls {
+    text-align: center;
+    margin-top: 20px;
+}
+.controls select, .controls button {
+    margin: 10px;
+}
+.back-button{
+    top: 40px;
+    left: 40px;
+    position: absolute;
+}
+.service-icon {
+    width: 6%; /* 이미지 크기를 고정 크기로 설정 */
+    position: fixed; /* 뷰포트에 고정된 위치를 설정 */
+    top: 3%; /* 뷰포트의 상단에서 2% 아래에 위치 */
+    right: 3%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
+    transition: all 0.3s ease;
+}
+.teamlogo-image {
+    max-width: 12%;
+    position: absolute;
+    bottom: 6%; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+.video-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px; 
+    font: rgb(185, 185, 185);
+    border: 1px solid #7f30bf; 
+    border-radius: 5px;
+    background-color: #fff; 
+    appearance: none;
+    cursor: pointer; 
+    outline: #7f30bf;
+    text-align-last: center;
+}
+/* 드롭다운 화살표 아이콘 스타일 */
+select::-ms-expand {
+    display: none; /* IE에서 드롭다운 화살표를 숨깁니다. */
+}
+
+/* 드롭다운 화살표 아이콘 스타일 */
+select::after {
+    content: '\25BC'; /* 화살표 아이콘을 설정합니다. */
+    position: absolute; /* 절대 위치로 설정합니다. */
+    top: 50%; /* 드롭다운 박스 상단에 아이콘을 위치시킵니다. */
+    right: 10px; /* 오른쪽 여백을 설정합니다. */
+    transform: translateY(-50%); /* 아이콘을 수직으로 가운데 정렬합니다. */
+    pointer-events: none; /* 이벤트가 아이콘에 영향을 주지 않도록 설정합니다. */
+    color: #666; /* 아이콘 색상을 설정합니다. */
+}
