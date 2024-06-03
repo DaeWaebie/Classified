@@ -12,63 +12,32 @@
         <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Back" class="service-icon">
     </a>
     
-        
-    <center>
-        <div class="center-alpha">
-            <div class="video-container">
-                {% if result %}
-                    <video id="videoPlayer" controls autoplay loop muted style="max-width: 500px; height: 500px;">
+    <div class="container">
+        <div class="video-container">
+            {% if result %}
+                    <video id="videoPlayer" controls autoplay loop muted>
                         <source src="{{ url_for('static', filename='download/de_video.mp4') }}" type="video/mp4">
-                    </video>
-                    <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
-                        <img id="downloadImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button" onmouseover="changeDownloadImage('over')" onmouseout="changeDownloadImage('out')">
-                    </a>
-                    
+                    </video>  
                 {% else %}
                     <p>표시할 결과가 없습니다.</p>
                 {% endif %}
-            </div>
-        </div>        
-</center>
+        </div>
+        <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
+            <img id="downloadImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button">
+        </a>         
+        </div>
+    </div>
+<img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
     <script>
-
-        window.onload = function() {
-            // 비디오 엘리먼트 가져오기
-            var video = document.getElementById('videoPlayer');
-    
-            // 비디오의 메타데이터 로드 완료 시 실행되는 이벤트 핸들러 추가
-            video.onloadedmetadata = function() {
-                // 비디오의 너비와 높이 가져오기
-                var width = this.videoWidth;
-                var height = this.videoHeight;
-    
-                // 비디오의 비율 계산
-                var aspectRatio = width / height;
-    
-                // 비디오의 높이를 500px로 설정하고 비율에 맞춰 너비 설정
-                this.style.height = "500px";
-                this.style.width = (500 * aspectRatio) + "px";
-            };
-        };
-
-        function changeImage(action) {
+document.addEventListener("DOMContentLoaded", function() {
         var imgElement = document.getElementById('backImage');
-        if (action === 'over') {
-            imgElement.src = "{{ url_for('static', filename='img/team_logo_white.png') }}";
-        } else if (action === 'out') {
-            imgElement.src = "{{ url_for('static', filename='img/team_logo.png') }}";
-        }
-    }
-
-    function changeDownloadImage(action) {
-            var imgElement = document.getElementById('downloadImage');
-            if (action === 'over') {
-                imgElement.src = "{{ url_for('static', filename='img/download_button_sh.png') }}"; // 호버 시 이미지 경로로 변경
-            } else if (action === 'out') {
-                imgElement.src = "{{ url_for('static', filename='img/download_button.png') }}"; // 원래 이미지 경로로 변경
-            }
-        }
-
+        imgElement.addEventListener('mouseover', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+        });
+        imgElement.addEventListener('mouseout', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+        });
+    });
     </script>
     
 </body>

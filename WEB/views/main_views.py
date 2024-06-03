@@ -70,11 +70,6 @@ def input_data():
     return  render_template('input.html')
 
 
-# /input/info/ 페이지
-# 정보 페이지 기능
-@databp.route('/info/', methods=['GET'])
-def info():
-    return render_template('info.html')
 # /input/preview/ 페이지
 # 비디오 업로드 및 미리보기 기능
 @databp.route('/preview/', methods=['POST'])
