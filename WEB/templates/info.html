@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* 스크롤이 생기지 않도록 설정 */
+        }
+
+        .responsive-image {
+            height: 100vh; /* 뷰포트 높이를 100%로 설정 */
+            width: auto; /* 이미지의 가로 비율을 자동으로 조정 */
+            display: block; /* 이미지 주변의 여백을 없애기 위해 block 요소로 설정 */
+            margin: 0 auto; /* 수평 중앙 정렬 */
+        }
+    </style>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='img/info.jpg') }}" class="responsive-image">
+</body>
+</html>

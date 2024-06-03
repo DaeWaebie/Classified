@@ -1,6 +1,6 @@
-.upload-box, .container {
+.container {
     width: 75%; 
-    height: 70%;
+    height: 65%;
     border-top: 2px solid #8d8d8dc5;
     border-bottom: 2px solid #8d8d8dc5;
     display: flex; 
@@ -11,17 +11,44 @@
     padding: 20px; 
     gap: 20px;
     background-color: #ffffff00;
-    position: fixed; /* 뷰포트에 고정된 위치를 설정합니다. */
-    top: 47%; /* 뷰포트의 세로 방향에서 50% 위치에 배치합니다. */
-    left: 50%; /* 뷰포트의 가로 방향에서 50% 위치에 배치합니다. */
-    transform: translate(-50%, -50%); /* 자신의 너비와 높이의 50%만큼 왼쪽과 위쪽으로 이동시켜 진정한 중앙에 배치합니다. */
-    z-index: 999; /* 다른 요소들 위에 나타나도록 우선 순위를 높입니다. */
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
 }
-.video-container {
-    flex: 1; /* 비디오 컨테이너가 사용 가능한 모든 공간을 차지하도록 설정 */
+.re-icon {
+    width: 6%; /* 이미지 크기를 고정 크기로 설정 */
+    position: fixed; /* 뷰포트에 고정된 위치를 설정 */
+    bottom: 85%; /* 뷰포트의 상단에서 2% 아래에 위치 */
+    left: 12%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
+    transition: all 0.3s ease;
+
+}
+.service-icon {
+    width: 6%; /* 이미지 크기를 고정 크기로 설정 */
+    position: fixed; /* 뷰포트에 고정된 위치를 설정 */
+    bottom: 85%; /* 뷰포트의 상단에서 2% 아래에 위치 */
+    right: 12%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
+    transition: all 0.3s ease;
+}
+.video-container, .dashed-box {
+    flex: 7; /* 비율 7 */
+    height: 100%; /* 부모 컨테이너 높이에 맞춤 */
     display: flex;
-    align-items: center; /* 비디오를 수직으로 중앙에 배치 */
-    height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.side-container {
+    flex: 3; /* 비율 3 */
+    height: 100%; /* 부모 컨테이너 높이에 맞춤 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
 #videoPlayer {
     display: flex;
@@ -37,9 +64,9 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center; 
-    padding: 20px;
+    padding: 5%;
     cursor: pointer;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 .hidden-button {
     background: none; /* 버튼 배경 제거 */
@@ -64,30 +91,17 @@
     color: #666;
 }
 
-.upload-button, #downloadImage {
-    height: 80px; /* 버튼의 높이를 조절하세요 */
+.upload-button, .download-button {
+    width: 22%; /* 버튼의 높이를 조절하세요 */
     position: absolute; /* 절대 위치 설정 */
-    top: 80%; /* 위에서 50% 떨어진 위치로 설정 */
-    right: 5%; /* 오른쪽에서 10% 떨어진 위치로 설정 */
-}
-.controls {
-    text-align: center;
-    margin-top: 20px;
-}
-.controls select, .controls button {
-    margin: 10px;
+    bottom: 0%; /* 아래에서 5% 떨어진 위치로 설정 */
+    right: 3%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
+    padding: 20px;
 }
 .back-button{
     top: 40px;
     left: 40px;
     position: absolute;
-}
-.service-icon {
-    width: 6%; /* 이미지 크기를 고정 크기로 설정 */
-    position: fixed; /* 뷰포트에 고정된 위치를 설정 */
-    top: 3%; /* 뷰포트의 상단에서 2% 아래에 위치 */
-    right: 3%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
-    transition: all 0.3s ease;
 }
 .teamlogo-image {
     max-width: 12%;
@@ -103,7 +117,10 @@
     align-items: center;
 }
 select {
-    width: 200px;
+    position: absolute;
+    right: 6%;
+    top: 70%;
+    width: 20%;
     padding: 10px;
     font-size: 16px; 
     font: rgb(185, 185, 185);
@@ -130,3 +147,4 @@ select::after {
     pointer-events: none; /* 이벤트가 아이콘에 영향을 주지 않도록 설정합니다. */
     color: #666; /* 아이콘 색상을 설정합니다. */
 }
+
