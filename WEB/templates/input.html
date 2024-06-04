@@ -17,14 +17,14 @@
         <a href="{{ url_for('info') }}">
             <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Home" class="service-icon">
         </a>
-        <!-- 이전으로 가기 버튼 -->
+        <!-- 홈 가기 버튼 -->
         <a href="{{ url_for('index') }}">
-            <img id="backbuttonImage" src="{{ url_for('static', filename='img/re_button.png') }}" alt="Back" class="re-icon"
-            data-alt-src="{{ url_for('static', filename='img/re_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+            <img id="backbuttonImage" src="{{ url_for('static', filename='img/home_button.png') }}" alt="Back" class="home-icon"
+            data-alt-src="{{ url_for('static', filename='img/home_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
         </a>
         <!--업로드 박스(회색 영역)-->
         <div class="container" id="uploadBox">
-            <div class="dashed-box drag-drop-area" ondrap="handleDrop(event)" ondragover="handleDragOver(event)">
+            <div class="upload-container drag-drop-area" ondrap="handleDrop(event)" ondragover="handleDragOver(event)">
                 <!-- 아래의 form 태그의 id 값을 변경하고, label 태그의 for 속성과 input 태그의 id 속성을 일치시킵니다. -->
                 <form id="upload-form" class="drag-drop-area" action="/input/preview/" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" id="file" accept="video/mp4" style="display:none;">
@@ -40,14 +40,24 @@
                         <div class="upload-text" id="uploadText"></div>
                     </label>
                     <script src="{{ url_for('static', filename = 'js/file_drag.js') }}"></script>
-                    <button type="submit" class="hidden-button" id="uploadButton">
-                        <img id="buttonImage" src="{{ url_for('static', filename='img/upload_button.png') }}" alt="Upload" class="upload-button"
-                         data-alt-src="{{ url_for('static', filename='img/upload_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
-                    </button>
+                    <div class="button-container">
+                        <button type="submit" class="hidden-button" id="uploadButton" onclick="checkFile()">
+                            <img id="buttonImage" src="{{ url_for('static', filename='img/upload_button.png') }}" alt="Upload" class="upload-button"
+                                data-alt-src="{{ url_for('static', filename='img/upload_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+                        </button>
+                        <a href="{{url_for('index')}}">
+                            <img id="rebuttonImage" src="{{ url_for('static', filename='img/re_button.png') }}" alt="re" class="re-button"
+                                data-alt-src="{{ url_for('static', filename='img/re_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+                        </a>
+                    </div>
                 </form>
             </div>
             <div class="side-container">
+                <img src="{{ url_for('static', filename='img/info.jpg') }}" class="info" id="info">
+
                 <img src="{{ url_for('static', filename='img/loading.gif') }}" class="loading-icon" id="loadingIcon" alt = Loading>
+                <p class="announce" id="loadingText" style="display: none;">영상 업로드 중...</p>
+                <br>
             </div>
             </div>
             
@@ -56,9 +66,8 @@
         <a href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
         </a>
-        <p class="copyright" >ⓒ team. Classified. all rights reserved.</p>
+        <p class="copyright" >ⓒ team Classified. all rights reserved.</p>
     <script>
-    
     document.addEventListener("DOMContentLoaded", function() {
     var imgElement = document.getElementById('backImage');
     var buttonImage = document.getElementById('buttonImage');
@@ -67,6 +76,10 @@
     var backbuttonImage = document.getElementById('backbuttonImage');
     var backSrc = backbuttonImage.getAttribute('src');
     var backAltSrc = backbuttonImage.getAttribute('data-alt-src');
+    var rebuttonImage = document.getElementById('rebuttonImage');
+    var reSrc = rebuttonImage.getAttribute('src');
+    var reAltSrc = rebuttonImage.getAttribute('data-alt-src');
+
 
     imgElement.addEventListener('mouseover', function() {
         this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
@@ -92,15 +105,38 @@
         backbuttonImage.setAttribute('src', backSrc);
     });
 
+    rebuttonImage.addEventListener('mouseover', function() {
+        rebuttonImage.setAttribute('src', reAltSrc);
+    });
+
+    rebuttonImage.addEventListener('mouseout', function() {
+        rebuttonImage.setAttribute('src', reSrc);
+    });
+
 });
+    function checkFile() {
+        var fileInput = document.getElementById('file');
+        if (fileInput.files.length === 0) {
+            alert('업로드할 파일을 선택하세요.');
+            event.preventDefault();
+        } else {
+            document.getElementById('upload-form').submit();
+        }
+    }
 
-
-document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
         var form = document.getElementById('upload-form');
         var loadingIcon = document.getElementById('loadingIcon');
+        var loadingText = document.getElementById('loadingText');
+        var infoImage = document.getElementById('info');
 
         form.addEventListener('submit', function() {
-            loadingIcon.style.display = 'block'; // loading 이미지 표시
+            var fileInput = document.getElementById('file');
+            if (fileInput.files.length !== 0) {
+                loadingIcon.style.display = 'block'; // loading 이미지 표시
+                loadingText.style.display = 'block';
+                infoImage.style.display = 'none';
+            }
         });
     });
 
