@@ -1,4 +1,12 @@
-
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    background: 
+    linear-gradient(to left,#a490ed38,#e4e5ff57,#ffffff,#ffffff,#ffffff, #ffffff,#ffffff, #ffffff,#ffffff,#ffffff, #ffffff, #ffffff, #ffffff,#ffffff,#e4e5ff57, #a490ed38);
+    background-size: cover, cover; /* 각 배경의 크기 조절 */
+    position: relative; 
+}
 .container {
     width: 75%; 
     height: 65%;
@@ -18,7 +26,7 @@
     transform: translate(-50%, -50%);
     z-index: 999;
 }
-.re-icon {
+.home-icon {
     width: 6%; /* 이미지 크기를 고정 크기로 설정 */
     position: fixed; /* 뷰포트에 고정된 위치를 설정 */
     bottom: 85%; /* 뷰포트의 상단에서 2% 아래에 위치 */
@@ -33,7 +41,7 @@
     right: 12%; /* 뷰포트의 오른쪽에서 5% 왼쪽에 위치 */
     transition: all 0.3s ease;
 }
-.video-container, .dashed-box {
+.video-container, .upload-container {
     flex: 7; /* 비율 7 */
     height: 100%; /* 부모 컨테이너 높이에 맞춤 */
     display: flex;
@@ -42,14 +50,22 @@
     padding: 10px;
     box-sizing: border-box;
 }
+.upload-container {
+    border: 2px dashed #a9a9a9c5; 
+}
 .side-container {
+    /* background-color: blueviolet; */
+    text-align: center;
     flex: 3; /* 비율 3 */
     height: 100%; /* 부모 컨테이너 높이에 맞춤 */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* 자식 요소들을 세로로 정렬 */
+    align-items: center; /* 자식 요소들을 중앙 정렬 (가로 방향) */
     padding: 10px;
     box-sizing: border-box;
+}
+p.side-container{
+    justify-content: center; /* 자식 요소들을 중앙 정렬 (세로 방향) */
 }
 .side-container > * {
     margin: 0; /* 모든 자식 요소의 기본 마진을 0으로 설정 */
@@ -61,18 +77,6 @@
     align-items: center; /* 비디오를 수직으로 중앙에 배치 */
     height: 100%; /* 비디오 컨테이너의 높이를 부모 컨테이너의 높이와 동일하게 설정 */
     width: 100%; /* 비디오를 수평으로 꽉 차게 설정 */
-}
-.dashed-box {
-    width: 70%;
-    height: 100%;
-    border: 2px dashed #a9a9a9c5; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center; 
-    padding: 5%;
-    cursor: pointer;
-    box-sizing: border-box;
 }
 .hidden-button {
     background: none; /* 버튼 배경 제거 */
@@ -97,17 +101,32 @@
     color: #666;
 }
 
-.upload-button, .download-button {
+.upload-button{
+    height: 80px; /* 버튼의 높이를 조절하세요 */
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 0%; /* 아래에서 5% 떨어진 위치로 설정 */
+    right: 2%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
+    padding: 20px;
+}
+.re-button{  /* 위치 변경 하지 마세용 */
+    height: 80px; /* 버튼의 높이를 조절하세요 */
+    position: absolute; /* 절대 위치 설정 */
+    bottom: 0%; /* 아래에서 5% 떨어진 위치로 설정 */
+    right: 19%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
+    padding: 20px;
+}
+.download-button{
     width: 22%; /* 버튼의 높이를 조절하세요 */
     position: absolute; /* 절대 위치 설정 */
     bottom: 0%; /* 아래에서 5% 떨어진 위치로 설정 */
-    right: 3%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
+    right: 6%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
     padding: 20px;
 }
-.back-button{
-    top: 40px;
-    left: 40px;
-    position: absolute;
+.back-button {
+    display: inline-block;
+    margin: 0 10px;
+    height: 80px;
+    vertical-align: middle;
 }
 .teamlogo-image {
     max-width: 12%;
@@ -164,5 +183,23 @@ select::after {
 
 .loading-icon{
     position: relative;
-    left: 10%;
+    top: 30%;
 }
+
+
+.announce{
+    position: absolute;
+    bottom: 40%;
+    left: 80%;
+    text-align: center;
+}
+
+.info{
+    height: 70%;
+    padding-top: 0;
+}
+.complit-stamp{
+    height: 20%;
+    padding-bottom: 5%;
+}
+

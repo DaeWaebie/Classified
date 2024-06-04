@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>안면 비식별화 서비스</title>
     <link href="{{ url_for('static', filename='css/inoutput.css') }}" rel="stylesheet">
+    <style>
+        .side-container{
+    justify-content: center; /* 자식 요소들을 중앙 정렬 (세로 방향) */
+}
+.side-contain
+    </style>
 </head>
 <body>
     <!-- info 버튼 -->
     <a href="{{ url_for('info') }}">
         <img id="backImage" src="{{ url_for('static', filename='img/service_logo_p.png') }}" alt="Home" class="service-icon">
+    </a>
+    <!-- 홈 가기 버튼 -->
+    <a href="{{ url_for('index') }}">
+        <img id="backbuttonImage" src="{{ url_for('static', filename='img/home_button.png') }}" alt="Back" class="home-icon"
+        data-alt-src="{{ url_for('static', filename='img/home_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
     </a>
  
     <div class="container">
@@ -19,50 +30,62 @@
                         <source src="{{ url_for('static', filename='download/de_video.mp4') }}" type="video/mp4">
                     </video>  
                 {% else %}
-                    <p>표시할 결과가 없습니다.</p>
+                    <h2>표시할 결과가 없습니다.</h2>
                 {% endif %}
         </div>
         <div class="side-container">
-            <p>비식별화가 완료되었습니다.
-            </p>
+            <img src="{{ url_for('static', filename='img/complit_stamp.png') }}" class="complit-stamp" id="complit-stamp">
+            <h4>비식별화가 완료되었습니다.</h4>
             <a href="{{ url_for('static', filename='download/de_video.mp4') }}" download>
                 <img id="buttonImage" src="{{ url_for('static', filename='img/download_button.png') }}" alt="Download" class="download-button"
                 data-alt-src="{{ url_for('static', filename='img/download_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
             </a>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 
-    <!-- home 버튼-->
     <a href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
     </a>
     <p class="copyright" >ⓒ team. Classified. all rights reserved.</p>
+        
     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var imgElement = document.getElementById('backImage');
+        var buttonImage = document.getElementById('buttonImage');
+        var originalSrc = buttonImage.getAttribute('src');
+        var altSrc = buttonImage.getAttribute('data-alt-src');
+        var backbuttonImage = document.getElementById('backbuttonImage');
+        var backSrc = backbuttonImage.getAttribute('src');
+        var backAltSrc = backbuttonImage.getAttribute('data-alt-src');
 
-document.addEventListener("DOMContentLoaded", function() {
-    var imgElement = document.getElementById('backImage');
-    var buttonImage = document.getElementById('buttonImage');
-    var originalSrc = buttonImage.getAttribute('src');
-    var altSrc = buttonImage.getAttribute('data-alt-src');
+        imgElement.addEventListener('mouseover', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+        });
 
-    imgElement.addEventListener('mouseover', function() {
-        this.src = "{{ url_for('static', filename='img/service_logo_k.png') }}";
+        imgElement.addEventListener('mouseout', function() {
+            this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
+        });
+
+        buttonImage.addEventListener('mouseover', function() {
+            buttonImage.setAttribute('src', altSrc);
+        });
+
+        buttonImage.addEventListener('mouseout', function() {
+            buttonImage.setAttribute('src', originalSrc);
+        });
+
+        backbuttonImage.addEventListener('mouseover', function() {
+            backbuttonImage.setAttribute('src', backAltSrc);
+        });
+
+        backbuttonImage.addEventListener('mouseout', function() {
+            backbuttonImage.setAttribute('src', backSrc);
+        });
+
     });
-
-    imgElement.addEventListener('mouseout', function() {
-        this.src = "{{ url_for('static', filename='img/service_logo_p.png') }}";
-    });
-
-    buttonImage.addEventListener('mouseover', function() {
-        buttonImage.setAttribute('src', altSrc);
-    });
-
-    buttonImage.addEventListener('mouseout', function() {
-        buttonImage.setAttribute('src', originalSrc);
-    });
-
-});
-
 
     </script>
 </body>
