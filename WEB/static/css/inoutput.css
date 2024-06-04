@@ -51,6 +51,11 @@
     padding: 10px;
     box-sizing: border-box;
 }
+.side-container > * {
+    margin: 0; /* 모든 자식 요소의 기본 마진을 0으로 설정 */
+    padding: 0; /* 모든 자식 요소의 기본 패딩을 0으로 설정 */
+}
+
 #videoPlayer {
     display: flex;
     align-items: center; /* 비디오를 수직으로 중앙에 배치 */
@@ -155,4 +160,9 @@ select::after {
     transform: translateX(-50%);
     text-align: center;
     width: 100%;
+}
+
+.loading-icon{
+    position: relative;
+    left: 10%;
 }
