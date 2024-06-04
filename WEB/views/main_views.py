@@ -12,7 +12,6 @@ from flask import copy_current_request_context
 # c:\Users\kdp\KDT-5\wk_Project\WEB
 root_dir = os.path.dirname(os.path.dirname(__file__))
 
-
 detect_dir = os.path.join(root_dir, 'static', 'model', 'yolov5')
 
 # sys.path에 detect.py가 있는 디렉토리 경로를 추가
@@ -136,7 +135,7 @@ def run_yolo_detection(file_path, mode):
 
     # YOLOv5 모델 실행
     run(
-        weights=os.path.join(root_dir, 'static', 'model', 'yolov5', 'runs', 'train', 'face_49k', 'weights', 'best.pt'),
+        weights=os.path.join(os.path.dirname(root_dir), 'MODEL', 'yolov5', 'runs', 'train', 'face_49k', 'weights', 'best.pt'),
         source=file_path,
         hide_conf=True,
         hide_labels=True,

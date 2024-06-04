@@ -30,7 +30,6 @@
         <div class="side-container">
             <!-- 로딩 아이콘 -->   
             <img src="{{url_for('static', filename='img/loading.gif')}}" class = "loading-icon" id = "loadingIcon" alt="Loading">
-
             <form id="option-form" action="/input/upload/" method="POST">
                 <select name="MODE" id="MODE">
                     <option value="none">모드 선택</option>
@@ -45,7 +44,7 @@
                     data-alt-src="{{ url_for('static', filename='img/run_button_pushed.png') }}" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
                 </button>
                 
-
+                
             </form>
         </div>
     </div>
