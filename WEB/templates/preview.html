@@ -28,7 +28,7 @@
             </video>
         </div>
         <div class="side-container">
-            <img src="{{ url_for('static', filename='img/info.jpg') }}" class="info" id="info">
+            <img src="{{ url_for('static', filename='img/info.png') }}" class="info" id="info">
             <!-- 로딩 아이콘 -->   
             <img src="{{url_for('static', filename='img/loading.gif')}}" class = "loading-icon" id = "loadingIcon" alt="Loading">
             <p class="announce" id="loadingText" style="display: none;"> 영상 처리 중... </p>
@@ -57,11 +57,10 @@
         </div>
     </div>
     
-    <!-- home 버튼-->
-    <a href="{{ url_for('index') }}">
-        <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
-    </a>
+
+    <img src="{{ url_for('static', filename='img/team_logo.png') }}" alt="team_logo" class="teamlogo-image">
     <p class="copyright" >ⓒ team. Classified. all rights reserved.</p>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var form = document.getElementById('option-form');

@@ -52,6 +52,7 @@ body {
 }
 .upload-container {
     border: 2px dashed #a9a9a9c5; 
+    cursor: pointer;
 }
 .side-container {
     /* background-color: blueviolet; */
@@ -89,16 +90,19 @@ p.side-container{
 }
 .upload-icon {
     max-width: 20%;
+    cursor: pointer;
 }
 .upload-text {
     font-size: 18px;
     color: #333;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .upload-restrictions {
     font-size: 14px;
     color: #666;
+    cursor: pointer;
 }
 
 .upload-button{
@@ -144,12 +148,14 @@ p.side-container{
 select {
     position: absolute;
     right: 6%;
-    top: 70%;
+    top: 75%;
     width: 20%;
     padding: 10px;
     font-size: 16px; 
+    /* 볼드체 */
+    font-weight: bold;
     font: rgb(185, 185, 185);
-    border: 1px solid #7f30bf; 
+    border: 4px solid #6B50BA; 
     border-radius: 5px;
     background-color: #fff; 
     appearance: none;
