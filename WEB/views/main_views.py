@@ -135,14 +135,14 @@ def run_yolo_detection(file_path, mode):
 
     # YOLOv5 모델 실행
     run(
-        weights=os.path.join(os.path.dirname(root_dir), 'MODEL', 'yolov5', 'runs', 'train', 'face_49k', 'weights', 'best.pt'),
+        weights=os.path.join(os.path.dirname(root_dir), 'MODEL', 'yolov5', 'runs', 'train', 'face_49k_adam', 'weights', 'best.pt'),
         source=file_path,
         hide_conf=True,
         hide_labels=True,
         line_thickness=0,
         mosaic_type=mode,
         name=name,
-        conf_thres=0.5,
+        conf_thres=0.461, # f1 score 최대값일 때 threshold
     )
 
     # 오디오 입히기
