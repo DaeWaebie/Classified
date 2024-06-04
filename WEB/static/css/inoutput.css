@@ -55,7 +55,6 @@ body {
     cursor: pointer;
 }
 .side-container {
-    /* background-color: blueviolet; */
     text-align: center;
     flex: 3; /* 비율 3 */
     height: 100%; /* 부모 컨테이너 높이에 맞춤 */
@@ -120,7 +119,7 @@ p.side-container{
     padding: 20px;
 }
 .download-button{
-    width: 22%; /* 버튼의 높이를 조절하세요 */
+    height: 80px; /* 버튼의 높이를 조절하세요 */
     position: absolute; /* 절대 위치 설정 */
     bottom: 0%; /* 아래에서 5% 떨어진 위치로 설정 */
     right: 6%; /* 오른쪽에서 5% 떨어진 위치로 설정 */
