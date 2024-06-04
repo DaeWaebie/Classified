@@ -3,7 +3,8 @@ body {
     height: 100vh;
     margin: 0;
     background: 
-    linear-gradient(to left,#a490ed38,#e4e5ff57,#ffffff,#ffffff,#ffffff, #ffffff,#ffffff, #ffffff,#ffffff,#ffffff, #ffffff, #ffffff, #ffffff,#ffffff,#e4e5ff57, #a490ed38);
+    linear-gradient(to left,#e4ddffea,#ebebfef5,#ffffff,#ffffff,#ffffff,#ffffff, #ffffff,#ffffff, #ffffff,#ffffff,#ffffff, #ffffff, #ffffff, #ffffff,#ffffff,#ebebfef5, #e4ddffea),
+    url('../img/bg_moving.gif') repeat center center fixed;;
     background-size: cover, cover; /* 각 배경의 크기 조절 */
     position: relative; 
 }
@@ -200,7 +201,7 @@ select::after {
 }
 
 .info{
-    height: 70%;
+    width: 90%;
     padding-top: 0;
 }
 .complit-stamp{
